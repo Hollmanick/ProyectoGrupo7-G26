@@ -1,4 +1,4 @@
-package com.example.retos345.entities;
+package com.example.Reto3.entities;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -27,18 +27,24 @@ public class Message implements Serializable{
 
     @Column(name = "messageText")
     private String messageText;
+    
+    @Column(name = "createdAt")
+    private Date createdAt;
+
+    @Column(name = "updateAt")
+    private Date updateAt;
 
     //***** RELACIONES *****
-    //Relacion Muchos a uno. El Message tiene enlazados un Client y Un Farm
+    //Relacion Muchos a uno. El Message tiene enlazados un Client y Un Ortopedic
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "client_id")
 	@JsonProperty(access = Access.WRITE_ONLY)
 	private Client client;
     
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "farm_id")
+	@JoinColumn(name = "ortopedic_id")
 	@JsonProperty(access = Access.WRITE_ONLY)
-	private Farm farm;
+	private Ortopedic ortopedic;
 
     //***** METODOS *****
     public Integer getId() {
@@ -65,12 +71,12 @@ public class Message implements Serializable{
         this.client = client;
     }
 
-    public Farm getFarm() {
-        return farm;
+    public Ortopedic getOrtopedic() {
+        return ortopedic;
     }
 
-    public void setFarm(Farm farm) {
-        this.farm = farm;
+    public void setOrtopedic(Ortopedic ortopedic) {
+        this.ortopedic = ortopedic;
     }
 
     

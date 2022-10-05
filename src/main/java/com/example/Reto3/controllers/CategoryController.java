@@ -1,4 +1,4 @@
-package com.example.retos345.controllers;
+package com.example.Reto3.controllers;
 
 import java.util.List;
 
@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.retos345.entities.Category;
-import com.example.retos345.services.CategoryService;
+import com.example.Reto3.entities.Category;
+import com.example.Reto3.services.CategoryService;
 
 @Service
 @RestController

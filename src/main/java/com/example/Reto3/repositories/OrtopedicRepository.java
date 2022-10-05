@@ -1,8 +1,8 @@
-package com.example.retos345.repositories;
+package com.example.Reto3.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.example.retos345.entities.Farm;
+import com.example.Reto3.entities.Ortopedic;
 
-public interface FarmRepository  extends JpaRepository<Farm, Integer>{
+public interface OrtopedicRepository  extends JpaRepository<Ortopedic, Integer>{
 }

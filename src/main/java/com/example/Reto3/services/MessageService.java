@@ -1,12 +1,12 @@
-package com.example.retos345.services;
+package com.example.Reto3.services;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.retos345.entities.Message;
-import com.example.retos345.repositories.MessageRepository;
+import com.example.Reto3.entities.Message;
+import com.example.Reto3.repositories.MessageRepository;
 
 
 @Service

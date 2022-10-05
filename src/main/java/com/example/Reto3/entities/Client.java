@@ -1,4 +1,4 @@
-package com.example.retos345.entities;
+package com.example.Reto3.entities;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -34,6 +34,12 @@ public class Client implements Serializable{
 
     @Column(name = "age")
     private Integer age;
+    
+    @Column(name = "createdAt")
+    private Date createdAt;
+
+    @Column(name = "updateAt")
+    private Date updateAt;
     
     //***** RELACIONES *****:
     // Un empleado puede tener muchas Reservation y Messages.

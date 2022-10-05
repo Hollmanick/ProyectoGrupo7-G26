@@ -1,4 +1,4 @@
-package com.example.retos345.entities;
+package com.example.Reto3.entities;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -18,37 +18,43 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "farm")
-public class Farm implements Serializable{
+@Table(name = "ortopedic")
+public class Ortopedic implements Serializable{
 
     //***** ATRIBUTOS *****
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @Column(name = "address")
-    private String address;
-
-    @Column(name = "extension")
-    private String extension;
-
+    
     @Column(name = "name")
     private String name;
 
+    @Column(name = "brand")
+    private String brand;
+
+    @Column(name = "year")
+    private Integer year;
+
     @Column(name = "description")
     private String description;
+    
+    @Column(name = "createdAt")
+    private Date createdAt;
+
+    @Column(name = "updateAt")
+    private Date updateAt;
 
     //***** RELACIONES *****
-    //Relación uno a uno. Una Farm tiene un Category relacionada.
+    //Relación uno a uno. Una Ortopedic tiene un Category relacionada.
     @OneToOne
 	@JoinColumn(name = "category_id")
 	private Category category;
 
-    // Un Farm puede tener muchas Reservation y Messages.
-    @OneToMany(mappedBy = "farm", cascade = CascadeType.ALL)
+    // Un Ortopedic puede tener muchas Reservation y Messages.
+    @OneToMany(mappedBy = "ortopedic", cascade = CascadeType.ALL)
     private Set<Reservation> reservations = new HashSet<>();
 
-    @OneToMany(mappedBy = "farm", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "ortopedic", cascade = CascadeType.ALL)
     private Set<Message> messages = new HashSet<>();
 
 
@@ -60,29 +66,29 @@ public class Farm implements Serializable{
     public void setId(Integer id) {
         this.id = id;
     }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getExtension() {
-        return extension;
-    }
-
-    public void setExtension(String extension) {
-        this.extension = extension;
-    }
-
+    
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+    
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public Integer getYear() {
+        return year;
+    }
+
+    public void setYear(Integer year) {
+        this.year = year;
     }
 
     public String getDescription() {

@@ -1,4 +1,4 @@
-package com.example.retos345.controllers;
+package com.example.Reto3.controllers;
 
 import java.util.List;
 
@@ -15,46 +15,46 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.retos345.entities.Farm;
-import com.example.retos345.services.FarmService;
+import com.example.Reto3.entities.Ortopedic;
+import com.example.Reto3.services.OrtopedicService;
 
 @Service
 @RestController
-@RequestMapping("api/Farm")
-public class FarmController {    
+@RequestMapping("api/Ortopedic")
+public class OrtopedicController {    
 
     @Autowired
-    FarmService farmService;
+    OrtopedicService ortopedicService;
 
-    public FarmController(FarmService farmService) {
-        this.farmService = farmService;
+    public OrtopedicController(OrtopedicService ortopedicService) {
+        this.ortopedicService = ortopedicService;
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<Farm>> getFarms(){
-        return new ResponseEntity<List<Farm>>(this.farmService.getListFarms(), HttpStatus.OK);
+    public ResponseEntity<List<Ortopedic>> getOrtopedics(){
+        return new ResponseEntity<List<Ortopedic>>(this.ortopedicService.getListOrtopedics(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Farm> getFarm(@PathVariable("id") int id){
-        return new ResponseEntity<Farm>(this.farmService.getFarm(id), HttpStatus.OK);
+    public ResponseEntity<Ortopedic> getOrtopedic(@PathVariable("id") int id){
+        return new ResponseEntity<Ortopedic>(this.ortopedicService.getOrtopedic(id), HttpStatus.OK);
     }
 
     @PostMapping("/save")
-    public ResponseEntity<Farm> crearFarm(@RequestBody Farm farm){
-        return new ResponseEntity<Farm>(this.farmService.crearFarm(farm), HttpStatus.CREATED);
+    public ResponseEntity<Ortopedic> crearOrtopedic(@RequestBody Ortopedic ortopedic){
+        return new ResponseEntity<Ortopedic>(this.ortopedicService.crearOrtopedic(ortopedic), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> eliminarFarm(@PathVariable("id") int id){
-        this.farmService.eliminarFarm(id);
-        return new ResponseEntity<String>("Farm Eliminado", HttpStatus.NO_CONTENT);
+    public ResponseEntity<String> eliminarOrtopedic(@PathVariable("id") int id){
+        this.ortopedicService.eliminarOrtopedic(id);
+        return new ResponseEntity<String>("Ortopedic Eliminado", HttpStatus.NO_CONTENT);
     }
 
     @PutMapping("/update")
-    public ResponseEntity<String> actualizarFarm(@RequestBody Farm farm){
-        this.farmService.actualizarFarm(farm.getId(), farm);
-        return new ResponseEntity<String>("Farm Actualizado", HttpStatus.CREATED);
+    public ResponseEntity<String> actualizarOrtopedic(@RequestBody Ortopedic ortopedic){
+        this.ortopedicService.actualizarOrtopedic(ortopedic.getId(), ortopedic);
+        return new ResponseEntity<String>("Ortopedic Actualizado", HttpStatus.CREATED);
     }
     
 

@@ -1,52 +1,52 @@
-package com.example.retos345.services;
+package com.example.Reto3.services;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.retos345.entities.Farm;
-import com.example.retos345.repositories.FarmRepository;
+import com.example.Reto3.entities.Ortopedic;
+import com.example.Reto3.repositories.OrtopedicRepository;
 
 
 @Service
-public class FarmService {
+public class OrtopedicService {
     
         @Autowired
-        private FarmRepository farmRepository;
+        private OrtopedicRepository ortopedicRepository;
 
-        public FarmService(FarmRepository farmRepository) {
-            this.farmRepository = farmRepository;
+        public OrtopedicService(OrtopedicRepository ortopedicRepository) {
+            this.ortopedicRepository = ortopedicRepository;
         }
 
         // METODOS CRUD
-        public List<Farm> getListFarms(){
-            return this.farmRepository.findAll();
+        public List<Ortopedic> getListOrtopedics(){
+            return this.ortopedicRepository.findAll();
         }
 
-        public Farm getFarm(int id){
-            if(!this.farmRepository.findById(id).isEmpty()){
-                return this.farmRepository.findById(id).get();
+        public Ortopedic getOrtopedic(int id){
+            if(!this.ortopedicRepository.findById(id).isEmpty()){
+                return this.ortopedicRepository.findById(id).get();
             }else{
                 return null;
             }
         }
 
-        public Farm crearFarm(Farm farm){
-            return this.farmRepository.save(farm);
+        public Ortopedic crearOrtopedic(Ortopedic ortopedic){
+            return this.ortopedicRepository.save(ortopedic);
         }
 
-        public void eliminarFarm(int id){
-            if(!this.farmRepository.findById(id).isEmpty()){
-                this.farmRepository.deleteById(id);
+        public void eliminarOrtopedic(int id){
+            if(!this.ortopedicRepository.findById(id).isEmpty()){
+                this.ortopedicRepository.deleteById(id);
             }
         }
 
-        public void actualizarFarm(int id, Farm farm){
-            if(!this.farmRepository.findById(id).isEmpty()){
-                Farm farmDB = this.farmRepository.findById(id).get();
+        public void actualizarOrtopedic(int id, Ortopedic ortopedic){
+            if(!this.ortopedicRepository.findById(id).isEmpty()){
+                Ortopedic ortopedicDB = this.ortopedicRepository.findById(id).get();
 
-                this.farmRepository.save(farmDB);
+                this.ortopedicRepository.save(ortopedicDB);
             }
         }
 }
