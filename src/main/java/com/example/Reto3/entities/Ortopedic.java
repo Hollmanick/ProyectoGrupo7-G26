@@ -30,7 +30,7 @@ public class Ortopedic implements Serializable {
     @Column(name = "brand")
     private String brand;
 
-    @Column(name = "year")
+    @Column(name = "years")
     private Integer year;
 
     @Column(name = "description")
