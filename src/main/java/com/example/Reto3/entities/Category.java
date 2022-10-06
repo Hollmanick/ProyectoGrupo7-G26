@@ -1,7 +1,6 @@
 package com.example.Reto3.entities;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,12 +23,6 @@ public class Category implements Serializable{
 
     @Column(name = "description")
     private String description;
-
-    @Column(name = "createdAt")
-    private Date createdAt;
-
-    @Column(name = "updateAt")
-    private Date updateAt;
 
     //***** METODOS *****
     public Integer getId() {

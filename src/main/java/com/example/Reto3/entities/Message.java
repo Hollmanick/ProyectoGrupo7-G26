@@ -1,7 +1,6 @@
 package com.example.Reto3.entities;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,12 +26,6 @@ public class Message implements Serializable{
 
     @Column(name = "messageText")
     private String messageText;
-    
-    @Column(name = "createdAt")
-    private Date createdAt;
-
-    @Column(name = "updateAt")
-    private Date updateAt;
 
     //***** RELACIONES *****
     //Relacion Muchos a uno. El Message tiene enlazados un Client y Un Ortopedic

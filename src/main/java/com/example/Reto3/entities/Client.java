@@ -1,7 +1,6 @@
 package com.example.Reto3.entities;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -34,13 +33,7 @@ public class Client implements Serializable{
 
     @Column(name = "age")
     private Integer age;
-    
-    @Column(name = "createdAt")
-    private Date createdAt;
-
-    @Column(name = "updateAt")
-    private Date updateAt;
-    
+        
     //***** RELACIONES *****:
     // Un empleado puede tener muchas Reservation y Messages.
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)

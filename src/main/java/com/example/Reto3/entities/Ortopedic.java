@@ -1,7 +1,6 @@
 package com.example.Reto3.entities;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -37,13 +36,7 @@ public class Ortopedic implements Serializable{
 
     @Column(name = "description")
     private String description;
-    
-    @Column(name = "createdAt")
-    private Date createdAt;
-
-    @Column(name = "updateAt")
-    private Date updateAt;
-
+ 
     //***** RELACIONES *****
     //Relación uno a uno. Una Ortopedic tiene un Category relacionada.
     @OneToOne
