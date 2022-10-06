@@ -21,7 +21,7 @@ import com.example.Reto3.services.ClientService;
 @Service
 @RestController
 @RequestMapping("api/Client")
-public class ClientController {    
+public class ClientController {
 
     @Autowired
     ClientService clientService;
@@ -31,31 +31,30 @@ public class ClientController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<Client>> getClients(){
+    public ResponseEntity<List<Client>> getClients() {
         return new ResponseEntity<List<Client>>(this.clientService.getListClients(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Client> getClient(@PathVariable("id") int id){
+    public ResponseEntity<Client> getClient(@PathVariable("id") int id) {
         return new ResponseEntity<Client>(this.clientService.getClient(id), HttpStatus.OK);
     }
 
     @PostMapping("/save")
-    public ResponseEntity<Client> crearClient(@RequestBody Client client){
+    public ResponseEntity<Client> crearClient(@RequestBody Client client) {
         return new ResponseEntity<Client>(this.clientService.crearClient(client), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> eliminarClient(@PathVariable("id") int id){
+    public ResponseEntity<String> eliminarClient(@PathVariable("id") int id) {
         this.clientService.eliminarClient(id);
         return new ResponseEntity<String>("Client Eliminado", HttpStatus.NO_CONTENT);
     }
 
     @PutMapping("/update")
-    public ResponseEntity<String> actualizarClient(@RequestBody Client client){
+    public ResponseEntity<String> actualizarClient(@RequestBody Client client) {
         this.clientService.actualizarClient(client.getId(), client);
         return new ResponseEntity<String>("Client Actualizado", HttpStatus.CREATED);
     }
-    
 
 }

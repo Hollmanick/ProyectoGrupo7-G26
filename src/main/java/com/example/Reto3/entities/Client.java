@@ -15,9 +15,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "client")
-public class Client implements Serializable{
+public class Client implements Serializable {
 
-    //***** ATRIBUTOS *****
+    // ***** ATRIBUTOS *****
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -33,8 +33,8 @@ public class Client implements Serializable{
 
     @Column(name = "age")
     private Integer age;
-        
-    //***** RELACIONES *****:
+
+    // ***** RELACIONES *****:
     // Un empleado puede tener muchas Reservation y Messages.
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
     private Set<Reservation> reservations = new HashSet<>();
@@ -42,7 +42,7 @@ public class Client implements Serializable{
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
     private Set<Message> messages = new HashSet<>();
 
-    //***** METODOS *****
+    // ***** METODOS *****
     public Integer getId() {
         return id;
     }
@@ -98,6 +98,5 @@ public class Client implements Serializable{
     public void setMessages(Set<Message> messages) {
         this.messages = messages;
     }
-    
-    
+
 }

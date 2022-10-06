@@ -21,7 +21,7 @@ import com.example.Reto3.services.CategoryService;
 @Service
 @RestController
 @RequestMapping("api/Category")
-public class CategoryController {    
+public class CategoryController {
 
     @Autowired
     CategoryService categoryService;
@@ -31,31 +31,30 @@ public class CategoryController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<Category>> getCategorys(){
+    public ResponseEntity<List<Category>> getCategorys() {
         return new ResponseEntity<List<Category>>(this.categoryService.getListCategorys(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Category> getCategory(@PathVariable("id") int id){
+    public ResponseEntity<Category> getCategory(@PathVariable("id") int id) {
         return new ResponseEntity<Category>(this.categoryService.getCategory(id), HttpStatus.OK);
     }
 
     @PostMapping("/save")
-    public ResponseEntity<Category> crearCategory(@RequestBody Category category){
+    public ResponseEntity<Category> crearCategory(@RequestBody Category category) {
         return new ResponseEntity<Category>(this.categoryService.crearCategory(category), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> eliminarCategory(@PathVariable("id") int id){
+    public ResponseEntity<String> eliminarCategory(@PathVariable("id") int id) {
         this.categoryService.eliminarCategory(id);
         return new ResponseEntity<String>("Category Eliminado", HttpStatus.NO_CONTENT);
     }
 
     @PutMapping("/update")
-    public ResponseEntity<String> actualizarCategory(@RequestBody Category category){
+    public ResponseEntity<String> actualizarCategory(@RequestBody Category category) {
         this.categoryService.actualizarCategory(category.getId(), category);
         return new ResponseEntity<String>("Category Actualizado", HttpStatus.CREATED);
     }
-    
 
 }

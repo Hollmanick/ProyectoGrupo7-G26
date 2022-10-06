@@ -11,9 +11,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "category")
-public class Category implements Serializable{
+public class Category implements Serializable {
 
-    //***** ATRIBUTOS *****
+    // ***** ATRIBUTOS *****
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -24,7 +24,7 @@ public class Category implements Serializable{
     @Column(name = "description")
     private String description;
 
-    //***** METODOS *****
+    // ***** METODOS *****
     public Integer getId() {
         return id;
     }
@@ -48,5 +48,5 @@ public class Category implements Serializable{
     public void setDescription(String description) {
         this.description = description;
     }
-    
+
 }

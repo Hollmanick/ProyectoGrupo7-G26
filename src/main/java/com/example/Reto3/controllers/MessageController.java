@@ -21,7 +21,7 @@ import com.example.Reto3.services.MessageService;
 @Service
 @RestController
 @RequestMapping("api/Message")
-public class MessageController {    
+public class MessageController {
 
     @Autowired
     MessageService messageService;
@@ -31,31 +31,30 @@ public class MessageController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<Message>> getMessages(){
+    public ResponseEntity<List<Message>> getMessages() {
         return new ResponseEntity<List<Message>>(this.messageService.getListMessages(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Message> getMessage(@PathVariable("id") int id){
+    public ResponseEntity<Message> getMessage(@PathVariable("id") int id) {
         return new ResponseEntity<Message>(this.messageService.getMessage(id), HttpStatus.OK);
     }
 
     @PostMapping("/save")
-    public ResponseEntity<Message> crearMessage(@RequestBody Message message){
+    public ResponseEntity<Message> crearMessage(@RequestBody Message message) {
         return new ResponseEntity<Message>(this.messageService.crearMessage(message), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> eliminarMessage(@PathVariable("id") int id){
+    public ResponseEntity<String> eliminarMessage(@PathVariable("id") int id) {
         this.messageService.eliminarMessage(id);
         return new ResponseEntity<String>("Message Eliminado", HttpStatus.NO_CONTENT);
     }
 
     @PutMapping("/update")
-    public ResponseEntity<String> actualizarMessage(@RequestBody Message message){
+    public ResponseEntity<String> actualizarMessage(@RequestBody Message message) {
         this.messageService.actualizarMessage(message.getId(), message);
         return new ResponseEntity<String>("Message Actualizado", HttpStatus.CREATED);
     }
-    
 
 }

@@ -15,16 +15,15 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "ortopedic")
-public class Ortopedic implements Serializable{
+public class Ortopedic implements Serializable {
 
-    //***** ATRIBUTOS *****
+    // ***** ATRIBUTOS *****
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    
+
     @Column(name = "name")
     private String name;
 
@@ -36,12 +35,12 @@ public class Ortopedic implements Serializable{
 
     @Column(name = "description")
     private String description;
- 
-    //***** RELACIONES *****
-    //Relación uno a uno. Una Ortopedic tiene un Category relacionada.
+
+    // ***** RELACIONES *****
+    // Relación uno a uno. Una Ortopedic tiene un Category relacionada.
     @OneToOne
-	@JoinColumn(name = "category_id")
-	private Category category;
+    @JoinColumn(name = "category_id")
+    private Category category;
 
     // Un Ortopedic puede tener muchas Reservation y Messages.
     @OneToMany(mappedBy = "ortopedic", cascade = CascadeType.ALL)
@@ -50,8 +49,7 @@ public class Ortopedic implements Serializable{
     @OneToMany(mappedBy = "ortopedic", cascade = CascadeType.ALL)
     private Set<Message> messages = new HashSet<>();
 
-
-    //***** METODOS *****
+    // ***** METODOS *****
     public Integer getId() {
         return id;
     }
@@ -59,7 +57,7 @@ public class Ortopedic implements Serializable{
     public void setId(Integer id) {
         this.id = id;
     }
-    
+
     public String getName() {
         return name;
     }
@@ -67,7 +65,7 @@ public class Ortopedic implements Serializable{
     public void setName(String name) {
         this.name = name;
     }
-    
+
     public String getBrand() {
         return brand;
     }
@@ -116,5 +114,4 @@ public class Ortopedic implements Serializable{
         this.messages = messages;
     }
 
-    
 }

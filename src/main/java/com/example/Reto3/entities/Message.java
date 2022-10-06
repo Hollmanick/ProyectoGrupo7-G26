@@ -17,9 +17,9 @@ import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 @Entity
 @Table(name = "message")
-public class Message implements Serializable{
+public class Message implements Serializable {
 
-    //***** ATRIBUTOS *****
+    // ***** ATRIBUTOS *****
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -27,19 +27,19 @@ public class Message implements Serializable{
     @Column(name = "messageText")
     private String messageText;
 
-    //***** RELACIONES *****
-    //Relacion Muchos a uno. El Message tiene enlazados un Client y Un Ortopedic
+    // ***** RELACIONES *****
+    // Relacion Muchos a uno. El Message tiene enlazados un Client y Un Ortopedic
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "client_id")
-	@JsonProperty(access = Access.WRITE_ONLY)
-	private Client client;
-    
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "ortopedic_id")
-	@JsonProperty(access = Access.WRITE_ONLY)
-	private Ortopedic ortopedic;
+    @JoinColumn(name = "client_id")
+    @JsonProperty(access = Access.WRITE_ONLY)
+    private Client client;
 
-    //***** METODOS *****
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "ortopedic_id")
+    @JsonProperty(access = Access.WRITE_ONLY)
+    private Ortopedic ortopedic;
+
+    // ***** METODOS *****
     public Integer getId() {
         return id;
     }
@@ -72,5 +72,4 @@ public class Message implements Serializable{
         this.ortopedic = ortopedic;
     }
 
-    
 }
