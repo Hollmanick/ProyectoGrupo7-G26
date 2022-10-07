@@ -15,6 +15,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "ortopedic")
 public class Ortopedic implements Serializable {
@@ -39,6 +41,7 @@ public class Ortopedic implements Serializable {
     // ***** RELACIONES *****
     // Relación uno a uno. Una Ortopedic tiene un Category relacionada.
     @OneToOne
+    @JsonIgnoreProperties("category")
     @JoinColumn(name = "category_id")
     private Category category;
 

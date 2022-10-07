@@ -41,20 +41,21 @@ public class OrtopedicController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<Ortopedic> crearOrtopedic(@RequestBody Ortopedic ortopedic) {
-        return new ResponseEntity<Ortopedic>(this.ortopedicService.crearOrtopedic(ortopedic), HttpStatus.CREATED);
+    public ResponseEntity<Void> crearOrtopedic(@RequestBody Ortopedic ortopedic) {
+        this.ortopedicService.crearOrtopedic(ortopedic);
+        return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> eliminarOrtopedic(@PathVariable("id") int id) {
+    public ResponseEntity<Void> eliminarOrtopedic(@PathVariable("id") int id) {
         this.ortopedicService.eliminarOrtopedic(id);
-        return new ResponseEntity<String>("Ortopedic Eliminado", HttpStatus.NO_CONTENT);
+        return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
     }
 
     @PutMapping("/update")
-    public ResponseEntity<String> actualizarOrtopedic(@RequestBody Ortopedic ortopedic) {
+    public ResponseEntity<Void> actualizarOrtopedic(@RequestBody Ortopedic ortopedic) {
         this.ortopedicService.actualizarOrtopedic(ortopedic.getId(), ortopedic);
-        return new ResponseEntity<String>("Ortopedic Actualizado", HttpStatus.CREATED);
+        return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
 
 }

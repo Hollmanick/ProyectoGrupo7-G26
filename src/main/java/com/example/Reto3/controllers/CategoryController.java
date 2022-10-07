@@ -41,20 +41,21 @@ public class CategoryController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<Category> crearCategory(@RequestBody Category category) {
-        return new ResponseEntity<Category>(this.categoryService.crearCategory(category), HttpStatus.CREATED);
+    public ResponseEntity<Void> crearCategory(@RequestBody Category category) {
+        this.categoryService.crearCategory(category);
+        return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> eliminarCategory(@PathVariable("id") int id) {
+    public ResponseEntity<Void> eliminarCategory(@PathVariable("id") int id) {
         this.categoryService.eliminarCategory(id);
-        return new ResponseEntity<String>("Category Eliminado", HttpStatus.NO_CONTENT);
+        return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
     }
 
     @PutMapping("/update")
-    public ResponseEntity<String> actualizarCategory(@RequestBody Category category) {
+    public ResponseEntity<Void> actualizarCategory(@RequestBody Category category) {
         this.categoryService.actualizarCategory(category.getId(), category);
-        return new ResponseEntity<String>("Category Actualizado", HttpStatus.CREATED);
+        return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
 
 }
