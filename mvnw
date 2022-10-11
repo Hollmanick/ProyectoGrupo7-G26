@@ -88,7 +88,7 @@ if [ -z "$M2_HOME" ] ; then
       PRG="$link"
     else
       PRG="`dirname "$PRG"`/$link"
-    fi
+    
   done
 
   saveddir=`pwd`
