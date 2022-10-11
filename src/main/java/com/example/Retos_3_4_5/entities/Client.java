@@ -37,10 +37,10 @@ public class Client implements Serializable {
     // ***** RELACIONES *****:
     // Un empleado puede tener muchas Reservation y Messages.
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
-    private Set<Reservation> reservations = new HashSet<>();
+    private Set<Message> messages = new HashSet<>();
 
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
-    private Set<Message> messages = new HashSet<>();
+    private Set<Reservation> reservations = new HashSet<>();    
 
     // ***** METODOS *****
     public Integer getIdClient() {
