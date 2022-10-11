@@ -36,13 +36,13 @@ public class Reservation implements Serializable {
     // Relacion Muchos a uno. La Reservation tiene enlazados un Client y Un Ortopedic
     @ManyToOne(optional = false)
     @JsonIgnoreProperties(value = {"reservations"})
-	@JoinColumn(name = "ortopedic_id")
-	private Ortopedic ortopedic;
+	    @JoinColumn(name = "ortopedic_id")
+	    private Ortopedic ortopedic;
 
     @ManyToOne(optional = false)
     @JsonIgnoreProperties(value = {"messages", "reservations"})
-	@JoinColumn(name = "client_id")
-	private Client client;
+	    @JoinColumn(name = "client_id")
+	    private Client client;
 
     @Column(name = "score")
     private String score;

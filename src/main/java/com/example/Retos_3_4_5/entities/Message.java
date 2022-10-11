@@ -29,13 +29,13 @@ public class Message implements Serializable {
     // Relacion Muchos a uno. El Message tiene enlazados un Client y Un Ortopedic
     @ManyToOne(optional = false)
     @JsonIgnoreProperties(value = {"messages", "reservations"})
-	@JoinColumn(name = "ortopedic_id")
-	private Ortopedic ortopedic;
+	    @JoinColumn(name = "ortopedic_id")
+	    private Ortopedic ortopedic;
 
     @ManyToOne(optional = false)
     @JsonIgnoreProperties(value = {"messages", "reservations"})
-	@JoinColumn(name = "client_id")
-	private Client client;
+	    @JoinColumn(name = "client_id")
+	    private Client client;
 
     // ***** METODOS *****
     public Integer getIdMessage() {

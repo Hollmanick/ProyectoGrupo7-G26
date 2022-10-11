@@ -42,8 +42,8 @@ public class Ortopedic implements Serializable {
     // Relación uno a uno. Una Ortopedic tiene un Category relacionada.
     @ManyToOne(optional = false)
     @JsonIgnoreProperties(value = {"ortopedics"})
-	@JoinColumn(name = "category_id")
-	private Category category;
+	    @JoinColumn(name = "category_id")
+	    private Category category;
 
     @OneToMany(mappedBy = "ortopedic", cascade = CascadeType.ALL)
     @JsonIgnoreProperties(value = {"client", "ortopedic"})
