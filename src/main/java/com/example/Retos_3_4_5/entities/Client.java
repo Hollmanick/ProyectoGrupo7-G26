@@ -20,16 +20,16 @@ public class Client implements Serializable {
     // ***** ATRIBUTOS *****
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
-    @Column(name = "name")
-    private String name;
+    private Integer idClient;
 
     @Column(name = "email")
     private String email;
 
     @Column(name = "password")
     private String password;
+
+    @Column(name = "name")
+    private String name;
 
     @Column(name = "age")
     private Integer age;
@@ -43,20 +43,12 @@ public class Client implements Serializable {
     private Set<Message> messages = new HashSet<>();
 
     // ***** METODOS *****
-    public Integer getId() {
-        return id;
+    public Integer getIdClient() {
+        return idClient;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setIdClient(Integer idClient) {
+        this.idClient = idClient;
     }
 
     public String getEmail() {
@@ -73,6 +65,14 @@ public class Client implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+    
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Integer getAge() {

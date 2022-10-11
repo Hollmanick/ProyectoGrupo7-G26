@@ -5,7 +5,6 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,8 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonProperty.Access;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "reservation")
@@ -23,7 +21,7 @@ public class Reservation implements Serializable {
     // ***** ATRIBUTOS *****
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer idReservation;
 
     @Column(name = "startDate")
     private Date startDate;
@@ -31,26 +29,37 @@ public class Reservation implements Serializable {
     @Column(name = "devolutionDate")
     private Date devolutionDate;
 
+    @Column(name = "status")
+    private String status;
+
     // ***** RELACIONES *****
-    // Relacion Muchos a uno. La Reservation tiene enlazados un Client y Un
-    // Ortopedic
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "client_id")
-    @JsonProperty(access = Access.WRITE_ONLY)
-    private Client client;
+    // Relacion Muchos a uno. La Reservation tiene enlazados un Client y Un Ortopedic
+    @ManyToOne(optional = false)
+    @JsonIgnoreProperties(value = {"reservations"})
+	@JoinColumn(name = "ortopedic_id")
+	private Ortopedic ortopedic;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "ortopedic_id")
-    @JsonProperty(access = Access.WRITE_ONLY)
-    private Ortopedic ortopedic;
+    @ManyToOne(optional = false)
+    @JsonIgnoreProperties(value = {"messages", "reservations"})
+	@JoinColumn(name = "client_id")
+	private Client client;
 
-    // ***** METODOS *****
-    public Integer getId() {
-        return id;
+    @Column(name = "score")
+    private String score;
+
+    //***** CONSTRUCTOR *****
+    public Reservation() {
+        this.status = "created";
+        this.score = null;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    // ***** METODOS *****
+    public Integer getIdReservation() {
+        return idReservation;
+    }
+
+    public void setIdReservation(Integer idReservation) {
+        this.idReservation = idReservation;
     }
 
     public Date getStartDate() {
@@ -83,6 +92,22 @@ public class Reservation implements Serializable {
 
     public void setOrtopedic(Ortopedic ortopedic) {
         this.ortopedic = ortopedic;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getScore() {
+        return score;
+    }
+
+    public void setScore(String score) {
+        this.score = score;
     }
 
 }

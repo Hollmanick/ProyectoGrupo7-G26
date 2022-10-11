@@ -11,8 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -40,17 +40,17 @@ public class Ortopedic implements Serializable {
 
     // ***** RELACIONES *****
     // Relación uno a uno. Una Ortopedic tiene un Category relacionada.
-    @OneToOne
-    @JsonIgnoreProperties("category")
-    @JoinColumn(name = "category_id")
-    private Category category;
+    @ManyToOne(optional = false)
+    @JsonIgnoreProperties(value = {"ortopedics"})
+	@JoinColumn(name = "category_id")
+	private Category category;
 
-    // Un Ortopedic puede tener muchas Reservation y Messages.
+    @OneToMany(mappedBy = "ortopedic", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties(value = {"client", "ortopedic"})
+    private Set<Message> messages = new HashSet<>();
+
     @OneToMany(mappedBy = "ortopedic", cascade = CascadeType.ALL)
     private Set<Reservation> reservations = new HashSet<>();
-
-    @OneToMany(mappedBy = "ortopedic", cascade = CascadeType.ALL)
-    private Set<Message> messages = new HashSet<>();
 
     // ***** METODOS *****
     public Integer getId() {

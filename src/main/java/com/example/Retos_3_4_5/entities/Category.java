@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "category")
 public class Category implements Serializable {
@@ -29,6 +31,7 @@ public class Category implements Serializable {
     private String description;
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("category")
     private Set<Ortopedic> ortopedics = new HashSet<>();
 
     // ***** METODOS *****

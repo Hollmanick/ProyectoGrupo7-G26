@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,8 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonProperty.Access;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "message")
@@ -22,30 +20,30 @@ public class Message implements Serializable {
     // ***** ATRIBUTOS *****
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer idMessage;
 
     @Column(name = "messageText")
     private String messageText;
 
     // ***** RELACIONES *****
     // Relacion Muchos a uno. El Message tiene enlazados un Client y Un Ortopedic
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "client_id")
-    @JsonProperty(access = Access.WRITE_ONLY)
-    private Client client;
+    @ManyToOne(optional = false)
+    @JsonIgnoreProperties(value = {"messages", "reservations"})
+	@JoinColumn(name = "ortopedic_id")
+	private Ortopedic ortopedic;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "ortopedic_id")
-    @JsonProperty(access = Access.WRITE_ONLY)
-    private Ortopedic ortopedic;
+    @ManyToOne(optional = false)
+    @JsonIgnoreProperties(value = {"messages", "reservations"})
+	@JoinColumn(name = "client_id")
+	private Client client;
 
     // ***** METODOS *****
-    public Integer getId() {
-        return id;
+    public Integer getIdMessage() {
+        return idMessage;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdMessage(Integer idMessage) {
+        this.idMessage = idMessage;
     }
 
     public String getMessageText() {
