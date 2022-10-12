@@ -108,6 +108,6 @@ public class Reservation implements Serializable {
 
     public void setScore(String score) {
         this.score = score;
-    }
+    }    
 
 }

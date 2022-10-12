@@ -68,6 +68,6 @@ public class Message implements Serializable {
 
     public void setOrtopedic(Ortopedic ortopedic) {
         this.ortopedic = ortopedic;
-    }
+    }    
 
 }
