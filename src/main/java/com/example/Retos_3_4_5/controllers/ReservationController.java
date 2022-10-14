@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.Retos_3_4_5.entities.Client;
 import com.example.Retos_3_4_5.entities.Reservation;
 import com.example.Retos_3_4_5.services.ReservationService;
 
@@ -58,6 +59,22 @@ public class ReservationController {
     public ResponseEntity<Void> actualizarReservation(@RequestBody Reservation reservation) {
         this.reservationService.actualizarReservation(reservation.getIdReservation(), reservation);
         return new ResponseEntity<Void>(HttpStatus.CREATED);
+    }
+
+    @GetMapping("/report-dates/{start}/{end}")
+    public ResponseEntity<List<Reservation>> getReservationsBetweenTime(@PathVariable("start") String start, @PathVariable("end") String end){
+        return new ResponseEntity<List<Reservation>>(this.reservationService.getReservationsBetweenTime(start, end), HttpStatus.OK);
+    }
+
+    @GetMapping("/report-status")
+    public ResponseEntity<String> getReservationsStatus(){
+        return new ResponseEntity<String>(this.reservationService.getReservationsStatus(), HttpStatus.OK);
+    }
+
+    @GetMapping("/report-clients")
+    public ResponseEntity<Object> getReservationsClients(){
+        List<Client> clientList = this.reservationService.getReservationsClients();
+        return new ResponseEntity<Object>(clientList, HttpStatus.OK);
     }
 
 }
