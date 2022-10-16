@@ -2,6 +2,7 @@ package com.example.Retos_3_4_5.services;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.Retos_3_4_5.entities.Client;
+import com.example.Retos_3_4_5.entities.ReportClient;
 import com.example.Retos_3_4_5.entities.Reservation;
 import com.example.Retos_3_4_5.repositories.ClientRepository;
 import com.example.Retos_3_4_5.repositories.ReservationRepository;
@@ -53,8 +55,14 @@ public class ReservationService {
         return result;
     }
 
-    public List<Client> getReservationsClients(){
-        return this.clientRepository.findAll();
+    public List<ReportClient> getReservationsReportClients(){
+        List<ReportClient> listReportClients = new ArrayList();
+        List<Client> listClients = this.clientRepository.findAll();
+        for(int i=0; i<listClients.size(); i++){
+            ReportClient reportClient = new ReportClient(listClients.get(i));
+            listReportClients.add(reportClient);
+        }
+        return listReportClients;
     }
 
     // ****** FIN REPORTES ******
