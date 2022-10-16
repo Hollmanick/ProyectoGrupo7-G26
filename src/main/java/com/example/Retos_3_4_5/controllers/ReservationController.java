@@ -1,7 +1,6 @@
 package com.example.Retos_3_4_5.controllers;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.Retos_3_4_5.entities.Client;
 import com.example.Retos_3_4_5.entities.ReportClient;
 import com.example.Retos_3_4_5.entities.Reservation;
 import com.example.Retos_3_4_5.services.ReservationService;
@@ -62,17 +62,19 @@ public class ReservationController {
     }
 
     @GetMapping("/report-dates/{start}/{end}")
-    public ResponseEntity<List<Reservation>> getReservationsBetweenTime(@PathVariable("start") String start, @PathVariable("end") String end){
-        return new ResponseEntity<List<Reservation>>(this.reservationService.getReservationsBetweenTime(start, end), HttpStatus.OK);
+    public ResponseEntity<List<Reservation>> getReservationsBetweenTime(@PathVariable("start") String start,
+            @PathVariable("end") String end) {
+        return new ResponseEntity<List<Reservation>>(this.reservationService.getReservationsBetweenTime(start, end),
+                HttpStatus.OK);
     }
 
     @GetMapping("/report-status")
-    public ResponseEntity<String> getReservationsStatus(){
+    public ResponseEntity<String> getReservationsStatus() {
         return new ResponseEntity<String>(this.reservationService.getReservationsStatus(), HttpStatus.OK);
     }
 
     @GetMapping("/report-clients")
-    public ResponseEntity<List<ReportClient>> getReservationsClients(){
+    public ResponseEntity<List<ReportClient>> getReservationsClients() {
         List<ReportClient> clientList = this.reservationService.getReservationsReportClients();
         return new ResponseEntity<List<ReportClient>>(clientList, HttpStatus.OK);
     }

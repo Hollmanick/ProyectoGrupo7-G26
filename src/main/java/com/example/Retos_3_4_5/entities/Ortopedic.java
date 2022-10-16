@@ -39,14 +39,14 @@ public class Ortopedic implements Serializable {
     private String description;
 
     // ***** RELACIONES *****
-    // Relación uno a uno. Una Ortopedic tiene un Category relacionada.
+    // Relación uno a uno. Una Farm tiene un Category relacionada.
     @ManyToOne(optional = true)
-    @JsonIgnoreProperties(value = {"ortopedics"})
-	    @JoinColumn(name = "category_id")
-	    private Category category;
+    @JsonIgnoreProperties(value = { "ortopedics" })
+    @JoinColumn(name = "category_id")
+    private Category category;
 
     @OneToMany(mappedBy = "ortopedic", cascade = CascadeType.ALL)
-    @JsonIgnoreProperties(value = {"client", "ortopedic"})
+    @JsonIgnoreProperties(value = { "client", "ortopedic" })
     private Set<Message> messages = new HashSet<>();
 
     @OneToMany(mappedBy = "ortopedic", cascade = CascadeType.ALL)
@@ -101,20 +101,20 @@ public class Ortopedic implements Serializable {
         this.category = category;
     }
 
-    public Set<Reservation> getReservations() {
-        return reservations;
-    }
-
-    public void setReservations(Set<Reservation> reservations) {
-        this.reservations = reservations;
-    }
-
     public Set<Message> getMessages() {
         return messages;
     }
 
     public void setMessages(Set<Message> messages) {
         this.messages = messages;
+    }
+
+    public Set<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(Set<Reservation> reservations) {
+        this.reservations = reservations;
     }
 
 }

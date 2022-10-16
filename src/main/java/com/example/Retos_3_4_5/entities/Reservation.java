@@ -33,21 +33,22 @@ public class Reservation implements Serializable {
     private String status;
 
     // ***** RELACIONES *****
-    // Relacion Muchos a uno. La Reservation tiene enlazados un Client y Un Ortopedic
-    @ManyToOne(optional = false)
-    @JsonIgnoreProperties(value = {"reservations"})
-	    @JoinColumn(name = "ortopedic_id")
-	    private Ortopedic ortopedic;
+    // Relacion Muchos a uno. La Reservation tiene enlazados un Client y Un Farm
 
     @ManyToOne(optional = false)
-    @JsonIgnoreProperties(value = {"messages", "reservations"})
-	    @JoinColumn(name = "client_id")
-	    private Client client;
+    @JsonIgnoreProperties(value = { "reservations" })
+    @JoinColumn(name = "ortopedic_id")
+    private Ortopedic ortopedic;
+
+    @ManyToOne(optional = false)
+    @JsonIgnoreProperties(value = { "messages", "reservations" })
+    @JoinColumn(name = "client_id")
+    private Client client;
 
     @Column(name = "score")
     private String score;
 
-    //***** CONSTRUCTOR *****
+    // ***** CONSTRUCTOR *****
     public Reservation() {
         this.status = "created";
         this.score = null;
@@ -78,12 +79,12 @@ public class Reservation implements Serializable {
         this.devolutionDate = devolutionDate;
     }
 
-    public Client getClient() {
-        return client;
+    public String getStatus() {
+        return status;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public Ortopedic getOrtopedic() {
@@ -94,12 +95,12 @@ public class Reservation implements Serializable {
         this.ortopedic = ortopedic;
     }
 
-    public String getStatus() {
-        return status;
+    public Client getClient() {
+        return client;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     public String getScore() {
@@ -108,6 +109,6 @@ public class Reservation implements Serializable {
 
     public void setScore(String score) {
         this.score = score;
-    }    
+    }
 
 }

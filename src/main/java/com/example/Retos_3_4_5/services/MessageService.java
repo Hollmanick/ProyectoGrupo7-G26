@@ -41,14 +41,14 @@ public class MessageService {
         }
     }
 
-    public void actualizarMessage(int id, Message message){
-        if(!this.messageRepository.findById(id).isEmpty()){
+    public void actualizarMessage(int id, Message message) {
+        if (!this.messageRepository.findById(id).isEmpty()) {
             Message messageDB = this.messageRepository.findById(id).get();
-            if(message.getMessageText() != null){
+            if (message.getMessageText() != null) {
                 messageDB.setMessageText(message.getMessageText());
             }
             this.messageRepository.save(messageDB);
         }
     }
-    
+
 }

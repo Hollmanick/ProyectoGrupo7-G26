@@ -26,16 +26,16 @@ public class Message implements Serializable {
     private String messageText;
 
     // ***** RELACIONES *****
-    // Relacion Muchos a uno. El Message tiene enlazados un Client y Un Ortopedic
+    // Relacion Muchos a uno. El Message tiene enlazados un Client y Un Farm
     @ManyToOne(optional = false)
-    @JsonIgnoreProperties(value = {"messages", "reservations"})
-	    @JoinColumn(name = "ortopedic_id")
-	    private Ortopedic ortopedic;
+    @JsonIgnoreProperties(value = { "messages", "reservations" })
+    @JoinColumn(name = "ortopedic_id")
+    private Ortopedic ortopedic;
 
     @ManyToOne(optional = false)
-    @JsonIgnoreProperties(value = {"messages", "reservations"})
-	    @JoinColumn(name = "client_id")
-	    private Client client;
+    @JsonIgnoreProperties(value = { "messages", "reservations" })
+    @JoinColumn(name = "client_id")
+    private Client client;
 
     // ***** METODOS *****
     public Integer getIdMessage() {
@@ -54,6 +54,14 @@ public class Message implements Serializable {
         this.messageText = messageText;
     }
 
+    public Ortopedic getOrtopedic() {
+        return ortopedic;
+    }
+
+    public void setOrtopedic(Ortopedic ortopedic) {
+        this.ortopedic = ortopedic;
+    }
+
     public Client getClient() {
         return client;
     }
@@ -61,13 +69,5 @@ public class Message implements Serializable {
     public void setClient(Client client) {
         this.client = client;
     }
-
-    public Ortopedic getOrtopedic() {
-        return ortopedic;
-    }
-
-    public void setOrtopedic(Ortopedic ortopedic) {
-        this.ortopedic = ortopedic;
-    }    
 
 }

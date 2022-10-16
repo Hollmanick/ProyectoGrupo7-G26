@@ -24,14 +24,14 @@ public class ReservationService {
     private ReservationRepository reservationRepository;
 
     @Autowired
-        private ClientRepository clientRepository;
+    private ClientRepository clientRepository;
 
     public ReservationService(ReservationRepository reservationRepository) {
         this.reservationRepository = reservationRepository;
     }
 
     // ****** INICIO REPORTES ******
-    public List<Reservation> getReservationsBetweenTime(String start, String end){
+    public List<Reservation> getReservationsBetweenTime(String start, String end) {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-M-dd", Locale.ENGLISH);
         formatter.setTimeZone(TimeZone.getTimeZone("America/New_York"));
         List<Reservation> result = null;
@@ -46,19 +46,19 @@ public class ReservationService {
         return result;
     }
 
-    public String getReservationsStatus(){
+    public String getReservationsStatus() {
         List<Reservation> completed = this.reservationRepository.findByStatus("completed");
         List<Reservation> cancelled = this.reservationRepository.findByStatus("cancelled");
-        String result = "{"+"\"completed\":"+completed.size()+","
-                        + "\"cancelled\":"+cancelled.size()
-                        + "}";
+        String result = "{" + "\"completed\":" + completed.size() + ","
+                + "\"cancelled\":" + cancelled.size()
+                + "}";
         return result;
     }
 
-    public List<ReportClient> getReservationsReportClients(){
+    public List<ReportClient> getReservationsReportClients() {
         List<ReportClient> listReportClients = new ArrayList();
         List<Client> listClients = this.clientRepository.findAll();
-        for(int i=0; i<listClients.size(); i++){
+        for (int i = 0; i < listClients.size(); i++) {
             ReportClient reportClient = new ReportClient(listClients.get(i));
             listReportClients.add(reportClient);
         }
@@ -97,5 +97,5 @@ public class ReservationService {
             this.reservationRepository.save(reservationDB);
         }
     }
-    
+
 }

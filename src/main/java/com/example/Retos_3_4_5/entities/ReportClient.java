@@ -18,7 +18,6 @@ import java.util.Set;
 // }
 
 public class ReportClient {
-
     private int total;
     private Client client;
 
@@ -51,6 +50,6 @@ public class ReportClient {
 
     public void setClient(Client client) {
         this.client = client;
-    }
+    }    
 
 }

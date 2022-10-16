@@ -42,8 +42,8 @@ public class Client implements Serializable {
     private Set<Message> messages = new HashSet<>();
 
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
-    @JsonIgnoreProperties(value = {"client"})
-    private Set<Reservation> reservations = new HashSet<>();  
+    @JsonIgnoreProperties(value = { "client" })
+    private Set<Reservation> reservations = new HashSet<>();
 
     // ***** METODOS *****
     public Integer getIdClient() {
@@ -69,7 +69,7 @@ public class Client implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
     public String getName() {
         return name;
     }
@@ -86,20 +86,20 @@ public class Client implements Serializable {
         this.age = age;
     }
 
-    public Set<Reservation> getReservations() {
-        return reservations;
-    }
-
-    public void setReservations(Set<Reservation> reservations) {
-        this.reservations = reservations;
-    }
-
     public Set<Message> getMessages() {
         return messages;
     }
 
     public void setMessages(Set<Message> messages) {
         this.messages = messages;
+    }
+
+    public Set<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(Set<Reservation> reservations) {
+        this.reservations = reservations;
     }
 
 }
